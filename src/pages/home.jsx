@@ -28,6 +28,8 @@ function Inicio () {
     // Get unique categories
     const categories = data ? [...new Set(data.map(item => item.CategoryName))] : [];
 
+    
+
     return (
         <>
             <div>

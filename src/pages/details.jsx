@@ -1,27 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useFetch } from "../Components/useFetch";
 
 function Detail() {
     const { sku } = useParams();
     const dispatch = useDispatch();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        fetch(`https://eock031zmoorept.m.pipedream.net/v1/products`)
-            .then(response => response.json())
-            .then(data => {
-                const productData = data.find(item => item.sku.toString() === sku);
-                setProduct(productData);
-                setLoading(false);
-            })
-            .catch(error => {
-                setError(error);
-                setLoading(false);
-            });
-    }, [sku]);
+    const { data, loading, error } = useFetch(`https://eock031zmoorept.m.pipedream.net/v1/products`);
+    const product = data ? data.find(item => item.sku.toString() === sku) : null;
 
     if (loading) return <p>Cargando...</p>;
     if (error) return <p>Error: {error.message}</p>;
@@ -30,7 +16,6 @@ function Detail() {
     const addToCart = (product) => {
         dispatch({ type: 'ADD_TO_CART', product: { ...product, quantity: 1 } });
         alert('Se ha agregado un producto al carrito');
-
     };
 
     return (

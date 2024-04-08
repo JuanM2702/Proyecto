@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './Components/store';
 import Inicio from './pages/home';
-import DetallesProducto from './Components/details';
+import DetallesProducto from './pages/details';
 import Header from './Components/Header';
 import Cart from './pages/cart';
 

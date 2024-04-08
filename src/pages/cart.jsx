@@ -24,6 +24,7 @@ function Cart() {
             <h1>Carrito de compras</h1>
             {cart.map(product => (
                 <div key={product.sku}>
+                    <h2>{product.sku}</h2>
                     <h2>{product.name}</h2>
                     <p>Cantidad: {product.quantity}</p>
                     <p>Precio: {product.price}</p>

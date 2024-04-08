@@ -1,4 +1,3 @@
-// CategorySelect.js
 import React from 'react';
 
 const CategorySelect = ({ categories, selectedCategory, setSelectedCategory }) => {
