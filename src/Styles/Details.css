@@ -1,0 +1,71 @@
+/* Estilo general del contenedor del producto */
+.product-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2em;
+    border: 1px solid #ddd;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Estilo para la imagen del producto */
+.product-card .product-image {
+    flex: 1;
+    margin-right: 1em;
+}
+
+.product-card .product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Estilo para los detalles del producto */
+.product-card .product-details {
+    flex: 2;
+}
+
+.product-card .product-details h1 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.product-card .product-details p {
+    color: #666;
+}
+
+.product-card .product-details button {
+    background-color: #008CBA; /* Blue */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+/* Estilo para los productos similares */
+.product-card .similar-products {
+    margin-top: 2em;
+    border-top: 1px solid #eee;
+    padding-top: 1em;
+}
+
+.product-card .similar-products h3 {
+    font-size: 1.2em;
+    color: #333;
+}
+
+.product-card .similar-products .product {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 1em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 1em;
+}

@@ -8,24 +8,26 @@ function Inicio () {
     const [itemsPerPage, ] = useState(10);
     const [selectedCategory, setSelectedCategory] = useState("");
 
-    // Filter items by category
+    // Realizar filtro de categorias
     const filteredData = data ? data.filter(item => selectedCategory ? item.CategoryName === selectedCategory : true) : [];
 
-    // Get current items
+
+
+    // Get current itemss
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page
+    //Barra de busqueda
+
+    // Paginación
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-    // Calculate number of pages
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(filteredData.length / itemsPerPage); i++) {
         pageNumbers.push(i);
     }
 
-    // Get unique categories
     const categories = data ? [...new Set(data.map(item => item.CategoryName))] : [];
 
     
@@ -47,15 +49,15 @@ function Inicio () {
                     <p>Cargando...</p>
                 ) : (
                     currentItems && currentItems.map((ubi) => (
-                        <div key={ubi.sku} style={styles.card}>
-                            <h3>{ubi.name}</h3>
-                            <p><strong>ID: </strong> { ubi.sku }</p>
-                            <p><strong>Tipo: </strong> { ubi.description }</p>
-                            <p><strong>Precio: </strong> { ubi.price }</p>
-                            <Link to={`/details/${ubi.sku}`}>
-                            <button>Ver mas...</button>
-                            </Link>
-                        </div>
+                        <Link to={`/details/${ubi.sku}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <div key={ubi.sku} style={styles.card}>
+                                <h3>{ubi.name}</h3>
+                                <img src={ubi.imageUrl} alt={ubi.name} style={styles.image}/>
+                                <p><strong>ID: </strong> { ubi.sku }</p>
+                                <p><strong>Tipo: </strong> { ubi.description }</p>
+                                <p><strong>Precio: </strong> { ubi.price }</p>
+                            </div>
+                        </Link>
                     ))
                 )}
             </div>
@@ -78,6 +80,10 @@ const styles = {
       margin: "10px",
       width: "250px",
       boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    },
+    image: {
+        width: "100%",
+        heidght: "auto",
     },
 };
 

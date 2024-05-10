@@ -37,6 +37,11 @@ function cartReducer(state = initialState, action) {
         ...state,
         cart: state.cart.filter(item => item.sku !== action.sku)
       };
+    case 'CLEAR_CART':
+      return {
+        ...state,
+        cart: []
+      };
     default:
       return state;
   }

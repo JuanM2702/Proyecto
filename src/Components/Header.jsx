@@ -2,10 +2,13 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { FaHome, FaUser, FaCode, FaFolderOpen, FaBriefcase, FaEnvelope, FaExclamationTriangle, FaShoppingCart } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
+import SearchBar from './SearchBar';
+import CategorySelect from './CategorySelect';
 
 const Header = () => {
   const cart = useSelector(state => state.cart);
   const totalItems = cart.reduce((total, product) => total + product.quantity, 0);
+
 
   return (
     <header>
@@ -21,6 +24,7 @@ const Header = () => {
         <Link to="/contact" title="Contact"><FaEnvelope />Contact</Link>
         <Link to="/tasks" title="tasks"><FaExclamationTriangle/>Tasks</Link>
         <Link to="/cart" title="Cart"><FaShoppingCart />Cart ({totalItems})</Link>
+
       </nav>
     </header>
   );
